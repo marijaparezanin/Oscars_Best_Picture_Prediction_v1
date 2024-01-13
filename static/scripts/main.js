@@ -6,17 +6,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Set the initial display property when the page loads
     popup.classList.add('hidden');
-    {{show_popup}} = false
+    
 
     // Add a mousedown event listener to the document
     document.addEventListener('mousedown', function (event) {
-        console.log("here")
+        console.log("here");
+
         
-        // Check if the clicked element is outside the popup
-        if (!popup.contains(event.target)) {
-            // Close the popup
-            popup.classList.add('hidden');
-        }
+        popup.style.display = "none";
+        popup.style.opacity = "1"; 
+    
     });
 });
 
