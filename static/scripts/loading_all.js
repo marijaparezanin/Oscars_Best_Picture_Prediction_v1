@@ -66,6 +66,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         populatePosters2(movies);
 
         allposters = document.getElementById("postersContainer");
-        allposters.top = "100%";
+        allposters.style.transform = "translate(-50%, -3.28%)";
     });
 });
