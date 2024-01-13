@@ -67,5 +67,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         allposters = document.getElementById("postersContainer");
         allposters.style.transform = "translate(-50%, -3.28%)";
+
+        mainElement = document.querySelector('main');
+        mainElement.style.paddingBottom = "6320px";
     });
 });

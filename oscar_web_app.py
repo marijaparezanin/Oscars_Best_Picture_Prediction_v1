@@ -12,12 +12,12 @@ def index():
 def predict():
     make_model()
     selected_movies = request.get_json().get('selected_movies', [])
+    print(selected_movies)
+
 
     winner = run_prediction(selected_movies)
     print("WINNER: ", winner)
 
-    #return render_template('index.html', show_popup=True, winner=winner)
-    #return render_template('index.html', show_popup=True, winner=winner)
     image_path = "../static/posters/"+winner+".jpg"
     return jsonify({"show_popup": True, "winner": winner, "image_path": image_path})
 

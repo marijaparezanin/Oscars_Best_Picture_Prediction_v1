@@ -62,5 +62,4 @@ document.addEventListener('DOMContentLoaded', async () => {
     const csvData = await fetchMovieData();
     const movies = parseCSV(csvData);
     populatePosters(movies);
-    posters_2024
 });
