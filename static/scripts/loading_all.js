@@ -1,14 +1,14 @@
 
 // Example: Fetch data from CSV
-const fetchMovieData = async () => {
-    const response = await fetch('/static/files/2024_candidates.csv');
+const fetchMovieData2 = async () => {
+    const response = await fetch('/static/files/oscardata.csv');
 
     const data = await response.text();
     return data;
 };
 
 // Example: Parse CSV data
-const parseCSV = (csv) => {
+const parseCSV2 = (csv) => {
     const rows = csv.split('\n');
     const movies = [];
     for (let i = 1; i < rows.length; i++) {
@@ -30,7 +30,7 @@ const parseCSV = (csv) => {
 };
 
 // Example: Populate posters
-const populatePosters = (movies) => {
+const populatePosters2 = (movies) => {
     const postersContainer = document.getElementById('postersContainer');
 
     movies.forEach((movie) => {
@@ -59,8 +59,13 @@ const populatePosters = (movies) => {
 
 // Example: Load posters when the page is ready
 document.addEventListener('DOMContentLoaded', async () => {
-    const csvData = await fetchMovieData();
-    const movies = parseCSV(csvData);
-    populatePosters(movies);
-    posters_2024
+    const loadPostersText = document.getElementById('text_link');
+    loadPostersText.addEventListener('click', async () => {
+        const csvData = await fetchMovieData2();
+        const movies = parseCSV2(csvData);
+        populatePosters2(movies);
+
+        allposters = document.getElementById("postersContainer");
+        allposters.top = "100%";
+    });
 });

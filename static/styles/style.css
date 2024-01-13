@@ -14,7 +14,7 @@
     flex-wrap: wrap;
     justify-content: space-around;
     position: absolute;
-    top: calc(50% + 170px);
+    top: calc(50% + 190px);
     left: 50%;
     transform: translate(-50%, -50%);
 }

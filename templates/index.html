@@ -18,9 +18,9 @@
          The winner is calculated on a multi-linear regression model that has been trained with the nominees and winners of the past 20 years in the category.
          The model takes into account many factors such as: IMDB score, Genre, RottenTomatos score, Audience score, Golden globe wins, runtime etc.
          <br>You can also select 3 films out of our 60+ film database from the past 2 decades and see which one would win against the chosen 
-         competitors. Try this exciting feature here!
-    </h4>
+         competitors.<h4 id="text_link" class = "homepage_text" style="cursor: pointer;">Try this exciting feature here!</h4>
 
+    </h4>
     <form action="/predict" method="post" onsubmit="return false">
         <button class = "btn_calculate_2024" onclick="calculateResults()">Calculate Winner</button>
 
@@ -39,6 +39,7 @@
     </div>
     <script src="{{ url_for('static', filename='scripts/main.js') }}"></script>
     <script src="{{ url_for('static', filename='scripts/loading_poster2024.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/loading_all.js') }}"></script>
 
 </body>
 </html>
