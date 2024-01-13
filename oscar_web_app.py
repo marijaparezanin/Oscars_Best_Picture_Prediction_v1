@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from linear_model import *
 
 app = Flask(__name__)
@@ -11,14 +11,12 @@ def index():
 @app.route('/predict', methods=['POST'])
 def predict():
     make_model()
-    # Get selected movie titles from the form
-    selected_movies = request.form.getlist('selected_movies[]')
+    selected_movies = request.get_json().get('selected_movies', [])
 
-    # Now, you can send the selected movies to your program and run the prediction function
     winner = run_prediction(selected_movies)
 
-    # Render the result HTML template
-    return render_template('result.html', winner=winner)
+
+    return jsonify({"message": winner})
 
 def run_prediction(selected_movies):
     print(f"Selected movies: {selected_movies}")

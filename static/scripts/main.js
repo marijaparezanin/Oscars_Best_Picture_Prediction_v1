@@ -14,18 +14,21 @@ async function calculateResults() {
 
     if (selectedPosters.length === 3) {
         try {
+            const selected_movies = selectedPosters.map(({ movieName }) => movieName);
+
             const response = await fetch('/predict', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ selectedPosters }),
+                body: JSON.stringify({ selected_movies }),
             });
 
             if (response.ok) {
                 const result = await response.json();
                 // Handle the result as needed
                 console.log(result);
+                console.log("hello")
                 // Display the result in a popup
                 alert(result.message);
             } else {
@@ -37,6 +40,9 @@ async function calculateResults() {
     } else {
         console.log('Please select exactly 3 posters.');
     }
+}
 
-    return false;
+
+function getResults(){
+    return selectedPosters;
 }

@@ -2,8 +2,10 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.decomposition import PCA
 from utils_nans1 import *
 import pandas as pd
+import math
 
 global model
+global features
 
 def print_LINE(features, labels, p_value_thresh = 0.05):
     global model
@@ -34,15 +36,43 @@ def transform_residuals(data_errors):
     data_errors['Guessed right'] = data_errors.apply(lambda row: transform_success(row['Succesful'], row['Actual']), axis=1)
     return data_errors
 
-def predict_winner(selected_posters):
+def predict_winner(selected_movies):
     global model
-
+    list_results = []
+    winning_score = -math.inf
     test_data = pd.read_csv("static\\files\\2024_candidates.csv")
+    for film in selected_movies:
+        single_film = test_data[test_data['Film'] == film]
+        single_film = single_film.drop(['Film', 'Year', 'won_best_picture'], axis=1)
+
+        single_film['const'] = 1.0
+
+        results = model.predict(single_film)
+        
+        if results.iloc[0] > winning_score:
+            winning_score = results.iloc[0]
+        list_results.append([film, results.iloc[0]])
+
+
+
     x_test = test_data.drop(['Film', 'Year', 'won_best_picture'], axis=1)
     x_test_with_const = sm.add_constant(x_test)
     test_residuals = model.predict(x_test_with_const)
+    print("ALL RESULTS ", list_results)
+    for film in list_results:
+        if film[1] == winning_score:
+            print(film)
+            return film[0]     #return name
+        
+    
+
+
+    #x_test = test_data.drop(['Film', 'Year', 'won_best_picture'], axis=1)
+    #x_test_with_const = sm.add_constant(x_test)
+    #test_residuals = model.predict(x_test_with_const)
+    
     #test_residuals_df = pd.DataFrame({'Predicted': test_residuals})
-    print(test_residuals[0])
+    return "winner"
 
 def print_model_stats(features, labels):
     global model
@@ -58,6 +88,7 @@ def print_model_stats(features, labels):
 
 def make_model(print_stats = False):
     global model
+    global features
 
     data = pd.read_csv('static\\files\\oscardata.csv')
     features = data.drop(['Film', 'Year', 'won_best_picture'], axis=1)  
