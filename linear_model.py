@@ -45,34 +45,19 @@ def predict_winner(selected_movies):
         single_film = test_data[test_data['Film'] == film]
         single_film = single_film.drop(['Film', 'Year', 'won_best_picture'], axis=1)
 
-        single_film['const'] = 1.0
+        single_film = np.column_stack([np.ones(len(single_film)), single_film])
 
         results = model.predict(single_film)
         
-        if results.iloc[0] > winning_score:
-            winning_score = results.iloc[0]
-        list_results.append([film, results.iloc[0]])
+        if results[0] > winning_score:
+            winning_score = results[0]
+        list_results.append([film, results[0]])
 
 
-
-    x_test = test_data.drop(['Film', 'Year', 'won_best_picture'], axis=1)
-    x_test_with_const = sm.add_constant(x_test)
-    test_residuals = model.predict(x_test_with_const)
-    print("ALL RESULTS ", list_results)
     for film in list_results:
         if film[1] == winning_score:
-            print(film)
             return film[0]     #return name
         
-    
-
-
-    #x_test = test_data.drop(['Film', 'Year', 'won_best_picture'], axis=1)
-    #x_test_with_const = sm.add_constant(x_test)
-    #test_residuals = model.predict(x_test_with_const)
-    
-    #test_residuals_df = pd.DataFrame({'Predicted': test_residuals})
-    return "winner"
 
 def print_model_stats(features, labels):
     global model

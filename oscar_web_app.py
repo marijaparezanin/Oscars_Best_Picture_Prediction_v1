@@ -14,14 +14,17 @@ def predict():
     selected_movies = request.get_json().get('selected_movies', [])
 
     winner = run_prediction(selected_movies)
+    print("WINNER: ", winner)
 
+    #return render_template('index.html', show_popup=True, winner=winner)
+    #return render_template('index.html', show_popup=True, winner=winner)
+    image_path = "../static/posters/"+winner+".jpg"
+    return jsonify({"show_popup": True, "winner": winner, "image_path": image_path})
 
-    return jsonify({"message": winner})
-
+    #return jsonify({"message": winner})
 def run_prediction(selected_movies):
     print(f"Selected movies: {selected_movies}")
-    predict_winner(selected_movies)
-    return "Predicted Winner"
+    return predict_winner(selected_movies)
 
 if __name__ == '__main__':
     app.run(debug=True)

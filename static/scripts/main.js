@@ -1,5 +1,26 @@
 var selectedPosters = [];
 
+
+document.addEventListener('DOMContentLoaded', function () {
+    const popup = document.getElementById("winner_popup");
+
+    // Set the initial display property when the page loads
+    popup.classList.add('hidden');
+    {{show_popup}} = false
+
+    // Add a mousedown event listener to the document
+    document.addEventListener('mousedown', function (event) {
+        console.log("here")
+        
+        // Check if the clicked element is outside the popup
+        if (!popup.contains(event.target)) {
+            // Close the popup
+            popup.classList.add('hidden');
+        }
+    });
+});
+
+
 function handlePosterClick(poster, movieName) {
     if (!poster.classList.contains('selected') && selectedPosters.length < 3) {
         poster.classList.add('selected');
@@ -28,11 +49,21 @@ async function calculateResults() {
                 const result = await response.json();
                 // Handle the result as needed
                 console.log(result);
-                console.log("hello")
-                // Display the result in a popup
-                alert(result.message);
+
+                // Toggle the visibility of the winner popup
+                document.querySelector('.winner_popup').style.display = 'flex';
+                document.querySelector('.winner_popup').style.opacity = '1';
+
+                const imageElement = document.getElementById("winner_poster_image")
+                imageElement.src = result.image_path;
+
+
+                // Display the winner in the popup
+                document.querySelector('.winner-text').innerText = result.winner;
             } else {
-                console.error('Server response not okay');
+                console.error('Server response not okay:', response.status, response.statusText);
+                const text = await response.text();
+                console.log('Response text:', text);
             }
         } catch (error) {
             console.error('Error while fetching data:', error);
@@ -41,6 +72,7 @@ async function calculateResults() {
         console.log('Please select exactly 3 posters.');
     }
 }
+
 
 
 function getResults(){
