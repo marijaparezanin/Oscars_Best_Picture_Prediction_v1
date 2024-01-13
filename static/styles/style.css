@@ -46,20 +46,31 @@
 }
 
 @font-face {
-    font-family: 'mauren-thin';
+    font-family: 'Poppins-ExtraLight';
     src: url('/static/fonts/Poppins-ExtraLight.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Poppins-Bold';
+    src: url('/static/fonts/Poppins-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
-    font-family: 'mauren-thin';
+    font-family: 'Poppins-ExtraLight';
     margin: 0;
     padding: 0;
 
     min-height: 100vh; /* Set the minimum height of the body to full viewport height */
     display: flex;
     flex-direction: column;
+}
+
+#text_link{
+    font-family: 'Poppins-Bold';
 }
 
 #bgVideo {
