@@ -33,13 +33,12 @@
     <div class="winner_popup" id = "winner_popup" {% if show_popup %}style="opacity: 1;"{% endif %}>
         <div class="popup-content">
             <h2>The Oscar for Best Picture goes to...</h2>
-            <p class="winner-text">{{ winner }}!</p>
+            <p class="winner-text">{{ winner }}</p>
             <img id = "winner_poster_image" src = "" alt = "Winner Image">
         </div>
     </div>
     <script src="{{ url_for('static', filename='scripts/main.js') }}"></script>
     <script src="{{ url_for('static', filename='scripts/loading_poster2024.js') }}"></script>
-    <script src="{{ url_for('static', filename='scripts/loading_all_posters.js') }}"></script>
 
 </body>
 </html>

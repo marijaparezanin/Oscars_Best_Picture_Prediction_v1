@@ -10,8 +10,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Add a mousedown event listener to the document
     document.addEventListener('mousedown', function (event) {
-        console.log("here");
-
         
         popup.style.display = "none";
         popup.style.opacity = "1"; 

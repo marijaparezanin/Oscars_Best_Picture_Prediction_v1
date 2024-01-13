@@ -41,11 +41,8 @@ def predict_winner(selected_movies):
     list_results = []
     winning_score = -math.inf
     test_data = pd.read_csv("static\\files\\2024_candidates.csv")
-    original_data = pd.read_csv("static\\files\\oscardata.csv")
     for film in selected_movies:
         single_film = test_data[test_data['Film'] == film]
-        if not single_film:
-            single_film = original_data[original_data['Film'] == film]
         single_film = single_film.drop(['Film', 'Year', 'won_best_picture'], axis=1)
 
         single_film = np.column_stack([np.ones(len(single_film)), single_film])
