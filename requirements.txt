@@ -4,4 +4,4 @@ pandas
 statsmodels
 seaborn
 matplotlib
-sklearn
+scikit-learn
