@@ -1,8 +1,8 @@
-# Oscar Best Picture Predictor
+# Oscar Best Picture Predictor v1
 
 ## Overview
 
-This project is a web application that predicts the winner of the Oscar Best Picture award using linear regression. The prediction is based on features extracted from historical data of Oscar-nominated movies over the past 20 years. The web application is built using Flask, HTML, JavaScript, and CSS.
+This project is a web application that predicts the winner of the Oscar Best Picture award using linear regression. The prediction is based on features extracted from historical data of Oscar-nominated movies over the past 20 years. The web application is built using Flask, HTML, JavaScript, and CSS. This version is using 2024 Oscar candidates, and has since been hosted and redesigned. The new version is the Oscars_Best_Prediction_v1, and can be found at http://oscars-predict.xyz/
 
 ## Features
 
