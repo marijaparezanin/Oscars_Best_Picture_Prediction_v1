@@ -1,6 +1,6 @@
 # Oscar Best Picture Predictor v1
 
-##Disclaimer:
+## Disclaimer:
 
 This version is using 2024 Oscar candidates, and has since been hosted and redesigned. The new version is the Oscars_Best_Prediction_v1, and can be found at http://oscars-predict.xyz/
 
